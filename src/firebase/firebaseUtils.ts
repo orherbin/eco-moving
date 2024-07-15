@@ -2,9 +2,9 @@ import {GoogleAuthProvider, signInWithPopup, User as FirebaseUser} from "firebas
 import {getFirestore,collection, addDoc, getDocs, updateDoc, doc, deleteDoc} from "firebase/firestore";
 export const firebaseConfig = {
     "apiKey": "AIzaSyD7ppCUqZY6UbZmYphoUoQaTAh29nFUTe0",
-    "authDomain": "ecomoving-ac278.firebaseapp.com",
-    "projectId": "ecomoving-ac278",
-    "storageBucket": "ecomoving-ac278.appspot.com",
+    "authDomain": "ecomoving-6d9c6.firebaseapp.com",
+    "projectId": "ecomoving-6d9c6",
+    "storageBucket": "ecomoving-6d9c6.appspot.com",
     "messagingSenderId": "190317021622",
     "appId": "1:190317021622:web:3e50051c48cb152ea5d917",
     "measurementId": "G-7Q0EB63CN6"
