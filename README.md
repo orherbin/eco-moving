@@ -1,4 +1,4 @@
-# Welcone to Eco Moving Website Source code
+# Welcome to Eco Moving Website Source code
 Website link: https://ecomoving-ac278.firebaseapp.com
 
 # Getting Started with Create React App
