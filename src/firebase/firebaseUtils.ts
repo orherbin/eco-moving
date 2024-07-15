@@ -1,7 +1,7 @@
 import {GoogleAuthProvider, signInWithPopup, User as FirebaseUser} from "firebase/auth";
 import {getFirestore,collection, addDoc, getDocs, updateDoc, doc, deleteDoc} from "firebase/firestore";
 export const firebaseConfig = {
-    "apiKey": "AIzaSyBZsrv24ffZz8e4ylET9JDwcbtoaJNVxNQ",
+    "apiKey": "AIzaSyBKqMMZD7Ohht397UJ-rWGQxCbl0eGTzjI",
     "authDomain": "ecomoving-ac278.firebaseapp.com",
     "projectId": "ecomoving-ac278",
     "storageBucket": "ecomoving-ac278.appspot.com",
