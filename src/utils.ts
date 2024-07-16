@@ -11,22 +11,15 @@ export const displayAlert = async (setAlert: any) => {
 }
 
 export const calculateDistance = async (origin:string, destination:string) => {
-    // return {distance:5,from:'PLEASE ASK YAHAV TO TURN THIS FEATURE ON',to:'PLEASE ASK YAHAV TO TURN THIS FEATURE ON'} //TODO: DELETE THIS LINE
-    //If this function fails, its either because distancematrix.ai limit is reached or the API key is invalid
-    //or https://cors-anywhere.herokuapp.com proxy has stopped working -
-    //visit https://cors-anywhere.herokuapp.com and click on the button to temporarily fix the issue
     const apiKey = '0T4j4phMrc9miSqv63D8OCKuCaxa8ZO8fclnoojyyg7LYE1guPGfoqXlv2Bb61mU';
     const url = 'https://api-v2.distancematrix.ai/maps/api/distancematrix/json'
-    const cors_url=`https://cors-anywhere.herokuapp.com/${url}`
+    const originUrl = origin.replace(' ', '+');
+    const destinationUrl = destination.replace(' ', '+');
+    const urlWithParams = `${url}?key=${apiKey}&origins=${originUrl},+Israel&destinations=${destinationUrl},+Israel`
+    const cors_url=`https://corsproxy.io/?${urlWithParams}`
     try {
 
-        const response = await axios.get(cors_url, {
-            params: {
-                key: apiKey,
-                origins: origin + ', Israel',
-                destinations: destination + ', Israel'
-            },
-        });
+        const response = await axios.get(cors_url);
 
         if (response.data.status === 'OK') {
             const distance = Math.round((response.data.rows[0].elements[0].distance.value)/1000);
@@ -43,12 +36,12 @@ export const calculateDistance = async (origin:string, destination:string) => {
 
 export const calculatePrice = (distance: number, formValues:any) => {
     let price = distance*100
-    price += (formValues.refrigerator + formValues.oven + formValues.bed + formValues.closet + formValues.table + formValues.sofa + formValues.washingMachine + formValues.chair + formValues.tv + formValues.smallCloset)*50
-    if (formValues.fromElevator){
-        price -= 50
+    price += (formValues.refrigerator + formValues.oven + formValues.bed + formValues.closet + formValues.table + formValues.sofa + formValues.washingMachine + formValues.chair + formValues.tv + formValues.smallCloset + formValues.numOfBoxes)*50
+    if (formValues.toFloor > 3 && !formValues.toElevator){
+        price +=100*(formValues.toFloor-3)
     }
-    if (formValues.toElevator){
-        price -= 50
+    if (formValues.fromFloor > 3 && !formValues.fromElevator){
+        price +=100*(formValues.fromFloor-3)
     }
     return price
 }
